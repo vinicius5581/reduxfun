@@ -32,8 +32,6 @@ const store = createStore(
   window.devToolsExtension && window.devToolsExtension()
 );
 
-store.dispatch(updateUserAction);
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
