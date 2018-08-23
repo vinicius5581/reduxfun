@@ -5,16 +5,10 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
 import thunk from "redux-thunk";
-import { applyMiddleware, compose, combineReducers, createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import { Provider } from "react-redux";
 
-import productsReducer from "./reducers/products-reducer";
-import userReducer from "./reducers/user-reducer";
-
-const allReducers = combineReducers({
-  products: productsReducer,
-  user: userReducer
-});
+import reducers from "./reducers";
 
 const allStoreEnhancers = compose(
   applyMiddleware(thunk),
@@ -22,7 +16,7 @@ const allStoreEnhancers = compose(
 );
 
 const store = createStore(
-  allReducers,
+  reducers,
   {
     products: [{ name: "eggs" }],
     user: "Vini"
