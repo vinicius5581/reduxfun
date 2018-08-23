@@ -45,3 +45,5 @@ console.log(store.getState());
 ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
 ```
+
+6.  Dispatch an action

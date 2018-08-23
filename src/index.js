@@ -11,5 +11,16 @@ const store = createStore(reducer);
 
 console.log(store.getState());
 
+const action = {
+  type: "changeState",
+  payload: {
+    newState: "New state"
+  }
+};
+
+store.dispatch(action);
+
+console.log(store.getState());
+
 ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
