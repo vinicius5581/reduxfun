@@ -33,9 +33,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   products: state.products,
-  user: state.user
+  user: state.user,
+  userPlusProp: `${state.user} ${props.someProp}`
 });
 
 const mapActionsToProps = {
