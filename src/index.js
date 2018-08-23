@@ -5,7 +5,12 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { createStore } from "redux";
 
-const reducer = () => "State";
+const reducer = (state, action) => {
+  if (action.type === "changeState") {
+    return action.payload.newState;
+  }
+  return "State";
+};
 
 const store = createStore(reducer);
 
