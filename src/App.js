@@ -32,14 +32,17 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  products: state.products,
-  user: state.user,
-  userPlusProp: `${state.user} ${props.someProp}`
-});
+const mapStateToProps = (state, props) => {
+  console.log("mapStateToProps props", props);
+  return {
+    products: state.products,
+    user: state.user,
+    userPlusProp: `${state.user} ${props.someProp}`
+  };
+};
 
 const mapActionsToProps = (dispatch, props) => {
-  console.log(this.props);
+  console.log("mapActionsToProps props", props);
   return bindActionCreators(
     {
       onUpdateUser: updateUser
@@ -48,7 +51,13 @@ const mapActionsToProps = (dispatch, props) => {
   );
 };
 
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
+  console.log(propsFromState, propsFromDispatch, ownProps);
+  return {};
+};
+
 export default connect(
   mapStateToProps,
-  mapActionsToProps
+  mapActionsToProps,
+  mergeProps
 )(App);
