@@ -3,8 +3,13 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { connect } from "react-redux";
+import { updateUser } from "./actions/user-actions";
 
 class App extends Component {
+  onUpdateUser = () => {
+    this.props.onUpdateUser("Nanda");
+  };
+
   render() {
     console.log(this.props);
     return (
@@ -16,6 +21,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div onClick={this.onUpdateUser}>Update user</div>
+        {this.props.user}
       </div>
     );
   }
@@ -26,4 +33,11 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(App);
+const mapActionsToProps = {
+  onUpdateUser: updateUser
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(App);
