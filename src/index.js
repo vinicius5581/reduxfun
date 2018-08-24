@@ -1,28 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
 
-import thunk from "redux-thunk";
-import { applyMiddleware, compose, createStore } from "redux";
+import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
 
-import reducers from "./reducers";
-
-const allStoreEnhancers = compose(
-  applyMiddleware(thunk),
-  window.devToolsExtension && window.devToolsExtension()
-);
-
-const store = createStore(
-  reducers,
-  {
-    products: [{ name: "eggs" }],
-    user: "Vini"
-  },
-  allStoreEnhancers
-);
+import store from "./store";
+import App from "./containers/App";
+import "./index.css";
 
 ReactDOM.render(
   <Provider store={store}>

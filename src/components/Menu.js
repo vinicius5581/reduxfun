@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { history } from "../history";
 
 class Menu extends Component {
+  onMenuItemClick = menu => {
+    history.push(menu.path);
+  };
   render() {
     const { menu } = this.props;
     const { items } = menu;
-    console.log(items);
     return (
       <div className={"app-menu"}>
         <ul className={"menu"}>
           {items.map((menu, idx) => {
             return (
-              <li key={idx}>
-                <a href={menu.path}>{menu.title}</a>
+              <li onClick={() => this.onMenuItemClick(menu)} key={idx}>
+                <a>{menu.title}</a>
               </li>
             );
           })}

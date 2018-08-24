@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import "./App.css";
 import { connect } from "react-redux";
-import { updateUser, apiRequest } from "./actions/user-actions";
 
-import Header from "./components/Header";
+import { updateUser, apiRequest } from "../actions/user-actions";
+
+import Header from "../components/Header";
+import "./App.css";
+
+import { history } from "../history";
+import { Router, Route, Switch } from "react-router-dom";
+import Page from "../components/Page";
 
 class App extends Component {
   componentDidMount() {
@@ -25,6 +30,14 @@ class App extends Component {
         <div onClick={this.onUpdateUserClick}>Update user</div>
         <input onChange={this.onUpdateUserChange} />
         {this.props.user}
+        <div className={"app-content"}>
+          <Router history={history}>
+            <Switch>
+              <Route exact={true} path={"/"} component={Page} />
+              <Route exact={true} path={"/:path"} component={Page} />
+            </Switch>
+          </Router>
+        </div>
       </div>
     );
   }
